@@ -659,3 +659,55 @@ h3 {
         padding: 0.75rem 1.5rem;
     }
 }
+.schedule-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    background: white;
+}
+
+.schedule-table th {
+    padding: 16px;
+}
+
+.schedule-table td {
+    padding: 16px;
+}
+
+.schedule-table tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+.schedule-table tr:hover td {
+    background: #eefafa;
+    transition: 0.2s ease;
+}
+.contact-wrapper {
+    align-items: start;
+}
+
+.contact-form {
+    gap: 1.4rem;
+}
+
+.form-group {
+    gap: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-info {
+    gap: 1.6rem;
+}
+
+.contact-item {
+    align-items: flex-start;
+    gap: 1rem;
+}
