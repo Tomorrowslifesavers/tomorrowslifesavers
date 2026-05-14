@@ -2,37 +2,42 @@
    CSS Variables & Reset
    ================================ */
 :root {
+    /* Colors */
     --pink: #f8b4c4;
     --pink-dark: #e8a0b0;
     --turquoise: #5ecece;
     --turquoise-dark: #4ab8b8;
-
     --white: #ffffff;
     --off-white: #fafafa;
-
     --grey-light: #f5f5f5;
     --grey: #e0e0e0;
     --grey-dark: #333333;
-
     --text: #2d2d2d;
     --text-light: #666666;
 
-    --font-family: 'Inter', Arial, sans-serif;
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
+    /* Spacing */
     --section-padding: 5rem 0;
     --container-width: 1100px;
 
+    /* Borders */
     --radius: 8px;
     --radius-lg: 12px;
 
+    /* Shadows */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
 
+    /* Transitions */
     --transition: 0.2s ease;
 }
 
-/* Reset */
+/* ================================
+   Reset
+   ================================ */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -59,13 +64,16 @@ img {
 a {
     color: var(--turquoise-dark);
     text-decoration: none;
+    transition: color var(--transition);
 }
 
 a:hover {
     color: var(--turquoise);
 }
 
-/* Layout */
+/* ================================
+   Layout
+   ================================ */
 .container {
     width: 100%;
     max-width: var(--container-width);
@@ -77,7 +85,9 @@ section {
     padding: var(--section-padding);
 }
 
-/* Typography */
+/* ================================
+   Typography
+   ================================ */
 h1, h2, h3 {
     font-weight: 600;
     line-height: 1.3;
@@ -85,46 +95,79 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-bottom: 0.75rem;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    margin-bottom: 1rem;
     text-align: center;
 }
 
 h3 {
     font-size: 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
-/* Buttons */
+.section-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* ================================
+   Buttons
+   ================================ */
 .btn {
     display: inline-block;
     padding: 0.85rem 1.75rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: var(--transition);
+    font-size: 1rem;
     font-weight: 500;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition);
+    text-align: center;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--pink), var(--turquoise));
-    color: white;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--turquoise) 100%);
+    color: var(--grey-dark);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow);
+    color: var(--grey-dark);
 }
 
-/* Navbar */
+.btn-small {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    background-color: var(--turquoise);
+    color: var(--white);
+    border-radius: 50px;
+}
+
+.btn-small:hover {
+    background-color: var(--turquoise-dark);
+    color: var(--white);
+}
+
+/* ================================
+   Navigation
+   ================================ */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255,255,255,0.95);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+    z-index: 1000;
     box-shadow: var(--shadow-sm);
 }
 
@@ -133,17 +176,59 @@ h3 {
     justify-content: space-between;
     align-items: center;
     max-width: var(--container-width);
-    margin: auto;
+    margin: 0 auto;
     padding: 1rem 1.5rem;
+}
+
+.nav-logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--grey-dark);
+}
+
+.nav-logo:hover {
+    color: var(--turquoise-dark);
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
-/* Hero */
+.nav-link {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--turquoise);
+    transition: width var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    background-color: var(--pink);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+}
+
+/* ================================
+   Hero Section
+   ================================ */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -151,32 +236,34 @@ h3 {
     justify-content: center;
     text-align: center;
     padding-top: 80px;
-    background: linear-gradient(180deg, var(--off-white), var(--white));
+    background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
 }
 
 .hero h1 {
-    background: linear-gradient(135deg, var(--pink), var(--turquoise));
+    background: linear-gradient(135deg, var(--pink-dark) 0%, var(--turquoise-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Services */
+/* ================================
+   Services
+   ================================ */
 .services {
-    background: var(--off-white);
+    background-color: var(--off-white);
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
 }
 
 .service-card {
-    background: white;
+    background-color: var(--white);
     padding: 2rem;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    transition: var(--transition);
+    transition: all var(--transition);
 }
 
 .service-card:hover {
@@ -184,22 +271,29 @@ h3 {
     box-shadow: var(--shadow);
 }
 
-/* Contact */
+/* ================================
+   Contact
+   ================================ */
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 3rem;
 }
 
-/* Footer */
+/* ================================
+   Footer
+   ================================ */
 .footer {
-    background: var(--grey-dark);
-    color: white;
+    background-color: var(--grey-dark);
+    color: var(--grey);
+    padding: 1.5rem 0;
     text-align: center;
-    padding: 1.5rem;
+    font-size: 0.9rem;
 }
 
-/* Mobile */
+/* ================================
+   Mobile
+   ================================ */
 @media (max-width: 768px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
@@ -208,4 +302,13 @@ h3 {
     .nav-menu {
         flex-direction: column;
     }
+}
+
+/* ================================
+   Logo
+   ================================ */
+.logo {
+    height: 50px;
+    width: auto;
+    display: block;
 }
