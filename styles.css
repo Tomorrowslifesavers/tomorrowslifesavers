@@ -728,3 +728,10 @@ h3 {
     align-items: flex-start;
     gap: 1rem;
 }
+.hero-logo {
+    height: 100px;
+    width: auto;
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    object-fit: contain;
+}
