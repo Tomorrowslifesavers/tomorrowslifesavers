@@ -717,6 +717,13 @@ h3 {
     gap: 1.6rem;
 }
 
+.logo {
+    height: 38px;
+    width: auto;
+    max-height: 38px;
+    object-fit: contain;
+    display: block;
+}
 .contact-item {
     align-items: flex-start;
     gap: 1rem;
