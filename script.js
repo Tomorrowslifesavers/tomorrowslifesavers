@@ -33,3 +33,25 @@ window.addEventListener('scroll', () => {
         navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.08)';
     }
 });
+const sheetID = "1p44Ru6G3aLCRJOdar_kCd01nKD0VYH-M2l10rWm28sU";
+const url = `https://opensheet.elk.sh/${sheetID}/Sheet1`;
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    const tableBody = document.getElementById("sessions-body");
+
+    data.forEach(session => {
+      tableBody.innerHTML += `
+        <tr>
+          <td>${session.Date}</td>
+          <td>${session.Course}</td>
+          <td>${session.Duration}</td>
+          <td>${session.Location}</td>
+          <td>
+            <a href="#contact" class="btn btn-small">Book</a>
+          </td>
+        </tr>
+      `;
+    });
+  });
