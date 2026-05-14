@@ -1,3 +1,8 @@
+const supabaseUrl = "https://xkcenjadoxrrauevpyfn.supabase.co/rest/v1/";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhrY2VuamFkb3hycmF1ZXZweWZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3ODQ2NzIsImV4cCI6MjA5NDM2MDY3Mn0.hzSBsUlv-IahcCaW1a48MNcTD-Kev1gOU6zwwcTrPUg";
+
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
 // Mobile navigation toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
