@@ -14,30 +14,27 @@
     --grey-dark: #333333;
     --text: #2d2d2d;
     --text-light: #666666;
-
+    
     /* Typography */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-
+    
     /* Spacing */
     --section-padding: 5rem 0;
     --container-width: 1100px;
-
+    
     /* Borders */
     --radius: 8px;
     --radius-lg: 12px;
-
+    
     /* Shadows */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
-
+    
     /* Transitions */
     --transition: 0.2s ease;
 }
 
-/* ================================
-   Reset
-   ================================ */
 *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -220,10 +217,42 @@ h3 {
     width: 100%;
 }
 
+.nav-link:hover {
+    color: var(--turquoise-dark);
+}
+
 .nav-cta {
     background-color: var(--pink);
     padding: 0.5rem 1.25rem;
     border-radius: 50px;
+}
+
+.nav-cta::after {
+    display: none;
+}
+
+.nav-cta:hover {
+    background-color: var(--pink-dark);
+    color: var(--grey-dark);
+}
+
+/* Mobile menu toggle */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--grey-dark);
+    transition: var(--transition);
 }
 
 /* ================================
@@ -243,10 +272,64 @@ h3 {
     background: linear-gradient(135deg, var(--pink-dark) 0%, var(--turquoise-dark) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    font-size: 1.15rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.hero-description {
+    max-width: 580px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    color: var(--text);
 }
 
 /* ================================
-   Services
+   About Section
+   ================================ */
+.about {
+    background-color: var(--white);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+}
+
+.about-text h3 {
+    margin-top: 2rem;
+    color: var(--turquoise-dark);
+}
+
+.about-list {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.about-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    font-size: 1.05rem;
+}
+
+.about-list .icon {
+    font-size: 1.3rem;
+}
+
+/* ================================
+   Services Section
    ================================ */
 .services {
     background-color: var(--off-white);
@@ -256,6 +339,7 @@ h3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .service-card {
@@ -271,13 +355,169 @@ h3 {
     box-shadow: var(--shadow);
 }
 
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--grey-dark);
+}
+
+.service-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
 /* ================================
-   Contact
+   Schedule Section
    ================================ */
+.schedule {
+    background-color: var(--white);
+}
+
+.schedule-table-wrapper {
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 1rem 1.25rem;
+    text-align: left;
+}
+
+.schedule-table th {
+    background-color: var(--turquoise);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.schedule-table th:first-child {
+    border-radius: var(--radius) 0 0 0;
+}
+
+.schedule-table th:last-child {
+    border-radius: 0 var(--radius) 0 0;
+}
+
+.schedule-table td {
+    border-bottom: 1px solid var(--grey);
+}
+
+.schedule-table tr:last-child td {
+    border-bottom: none;
+}
+
+.schedule-table tr:hover td {
+    background-color: var(--off-white);
+}
+
+.schedule-note {
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* ================================
+   Contact Section
+   ================================ */
+.contact {
+    background: linear-gradient(180deg, var(--off-white) 0%, var(--white) 100%);
+}
+
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.contact-item strong {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+.contact-item a,
+.contact-item span {
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--grey-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--grey);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--turquoise);
+    box-shadow: 0 0 0 3px rgba(94, 206, 206, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .btn {
+    align-self: flex-start;
 }
 
 /* ================================
@@ -292,23 +532,130 @@ h3 {
 }
 
 /* ================================
-   Mobile
+   Mobile Responsive
    ================================ */
 @media (max-width: 768px) {
+    :root {
+        --section-padding: 3.5rem 0;
+    }
+    
+    /* Mobile Navigation */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 0;
+        box-shadow: var(--shadow);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all var(--transition);
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-menu li {
+        width: 100%;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--grey-light);
+    }
+    
+    .nav-link::after {
+        display: none;
+    }
+    
+    .nav-cta {
+        margin-top: 0.5rem;
+        text-align: center;
+    }
+    
+    /* Mobile toggle animation */
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    /* Contact section mobile */
     .contact-wrapper {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
-
-    .nav-menu {
-        flex-direction: column;
+    
+    .contact-info {
+        order: 2;
+    }
+    
+    /* Schedule table mobile */
+    .schedule-table {
+        min-width: unset;
+    }
+    
+    .schedule-table thead {
+        display: none;
+    }
+    
+    .schedule-table tr {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--grey);
+    }
+    
+    .schedule-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border: none;
+    }
+    
+    .schedule-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--grey-dark);
+    }
+    
+    .schedule-table td:last-child {
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+    }
+    
+    .schedule-table td:last-child::before {
+        display: none;
     }
 }
 
-/* ================================
-   Logo
-   ================================ */
-.logo {
-    height: 50px;
-    width: auto;
-    display: block;
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .btn {
+        padding: 0.75rem 1.5rem;
+    }
 }
