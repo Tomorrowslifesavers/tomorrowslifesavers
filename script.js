@@ -1,7 +1,10 @@
 const supabaseUrl = "https://xkcenjadoxrrauevpyfn.supabase.co/rest/v1/";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhrY2VuamFkb3hycmF1ZXZweWZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3ODQ2NzIsImV4cCI6MjA5NDM2MDY3Mn0.hzSBsUlv-IahcCaW1a48MNcTD-Kev1gOU6zwwcTrPUg";
 
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
 document.getElementById("booking-form").addEventListener("submit", async (e) => {
+ 
   e.preventDefault();
 
   const name = e.target.name.value;
@@ -22,8 +25,6 @@ document.getElementById("booking-form").addEventListener("submit", async (e) => 
     e.target.reset();
   }
 });
-
-const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Mobile navigation toggle
 const navToggle = document.querySelector('.nav-toggle');
