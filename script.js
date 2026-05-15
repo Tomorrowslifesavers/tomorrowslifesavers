@@ -1,29 +1,39 @@
-const supabaseUrl = "https://xkcenjadoxrrauevpyfn.supabase.co/rest/v1/";
+const supabaseUrl = "https://xkcenjadoxrrauevpyfn.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhrY2VuamFkb3hycmF1ZXZweWZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3ODQ2NzIsImV4cCI6MjA5NDM2MDY3Mn0.hzSBsUlv-IahcCaW1a48MNcTD-Kev1gOU6zwwcTrPUg";
 
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-document.getElementById("booking-form").addEventListener("submit", async (e) => {
- 
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
 
-  const name = e.target.name.value;
-  const email = e.target.email.value;
-  const date = e.target.date.value;
-  const time = e.target.time.value;
-  const notes = e.target.notes.value;
+  const form = document.getElementById("booking-form");
 
-  const { error } = await supabaseClient
-    .from("bookings")
-    .insert([{ name, email, date, time, notes }]);
-
-  if (error) {
-    console.error(error);
-    alert("Booking failed");
-  } else {
-    alert("Booking successful!");
-    e.target.reset();
+  if (!form) {
+    console.error("Booking form not found");
+    return;
   }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const date = e.target.date.value;
+    const time = e.target.time.value;
+    const notes = e.target.notes.value;
+
+    const { error } = await supabaseClient
+      .from("bookings")
+      .insert([{ name, email, date, time, notes }]);
+
+    if (error) {
+      console.error(error);
+      alert("Booking failed: " + error.message);
+    } else {
+      alert("Booking successful!");
+      form.reset();
+    }
+  });
+
 });
 
 // Mobile navigation toggle
